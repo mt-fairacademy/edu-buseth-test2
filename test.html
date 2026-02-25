@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Business Ethics & Sustainability Practice Quiz (Test 2)</title>
+  <style>
+    :root{
+      --bg:#faf7f2;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#555;
+      --gold:#B8922A;
+      --shadow:0 3px 16px rgba(184,146,42,0.11);
+      --radius:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Montserrat, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding: 26px 22px;
+    }
+    h1{margin:0 0 6px 0; font-size: 1.6rem;}
+    .sub{margin:0 0 18px 0; color:var(--muted)}
+    h2{margin:26px 0 10px 0; font-size: 1.2rem;}
+    .q{
+      padding: 14px 14px;
+      border: 1px solid rgba(184,146,42,0.25);
+      border-radius: 10px;
+      margin: 12px 0;
+      background: rgba(250,247,242,0.35);
+    }
+    .q p{margin:0 0 10px 0; font-weight:600}
+    .opts label{
+      display:block;
+      padding: 6px 8px;
+      border-radius: 8px;
+      cursor:pointer;
+      color: #1a1a1a;
+    }
+    .opts input{margin-right:10px}
+    .opts label:hover{background: rgba(184,146,42,0.10)}
+    .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+      align-items:center;
+    }
+    .btn{
+      background: var(--bg);
+      color: #1a1a1a;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      font-size: 1.03rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 11px 22px;
+      transition: background .14s, color .14s, border .14s;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn:hover{ background: var(--gold); color: #fff; border-color: var(--gold); }
+    .score{
+      font-weight:700;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(184,146,42,0.10);
+      border: 1px solid rgba(184,146,42,0.25);
+    }
+    .small{color:var(--muted); font-size:0.95rem; margin-top:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Business Ethics & Sustainability Practice Quiz</h1>
+      <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
+
+      <form id="quizForm">
+        <h2>Part 1: Multiple Choice Questions (MCQs)</h2>
+
+        <div class="q">
+          <p>1. What does the "Bathsheba Syndrome" describe in a business context?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq1" value="A">A. A psychological disorder affecting entry-level employees.</label>
+            <label><input type="radio" name="mcq1" value="B">B. A legal loophole used to avoid environmental regulations.</label>
+            <label><input type="radio" name="mcq1" value="C">C. A leadership failure caused by success, hubris, and a sense of invincibility.</label>
+            <label><input type="radio" name="mcq1" value="D">D. A method for calculating the social impact of a project.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>2. According to Howard Gardner, what is the fundamental question asked by an "ethical mind"?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq2" value="A">A. "What is the maximum profit we can achieve?"</label>
+            <label><input type="radio" name="mcq2" value="B">B. "If all workers in my profession did what I do, what would the world be like?"</label>
+            <label><input type="radio" name="mcq2" value="C">C. "What is the legal risk of this specific action?"</label>
+            <label><input type="radio" name="mcq2" value="D">D. "How can I follow orders more efficiently?"</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>3. Which ethical theory evaluates the rightness of an action based on producing the "greatest good for the greatest number"?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq3" value="A">A. Virtue Ethics</label>
+            <label><input type="radio" name="mcq3" value="B">B. Kantian Deontology</label>
+            <label><input type="radio" name="mcq3" value="C">C. Utilitarianism</label>
+            <label><input type="radio" name="mcq3" value="D">D. Ethical Egoism</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>4. In the "Layers of Business Ethics," Layer 1 refers to:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq4" value="A">A. Decisions influenced by industry competition.</label>
+            <label><input type="radio" name="mcq4" value="B">B. Individual choices and the ethical standards employees bring to an organization.</label>
+            <label><input type="radio" name="mcq4" value="C">C. Decisions made based on societal cultural norms.</label>
+            <label><input type="radio" name="mcq4" value="D">D. Organizational policies carried out by employees.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>5. The Brundtland Report (1987) defines sustainable development as development that:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq5" value="A">A. Prioritizes economic growth above all other factors.</label>
+            <label><input type="radio" name="mcq5" value="B">B. Meets the needs of the present without compromising the ability of future generations to meet their own needs.</label>
+            <label><input type="radio" name="mcq5" value="C">C. Focuses exclusively on reducing the carbon footprint of manufacturing.</label>
+            <label><input type="radio" name="mcq5" value="D">D. Eliminates the need for corporate profits.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>6. Which "Practical Ethical Test" asks if you would be comfortable seeing your decision on the front page of a major publication?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq6" value="A">A. The Grandma Test</label>
+            <label><input type="radio" name="mcq6" value="B">B. The Sleep Test</label>
+            <label><input type="radio" name="mcq6" value="C">C. The Newspaper Test</label>
+            <label><input type="radio" name="mcq6" value="D">D. The Categorical Imperative</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>7. In the Power/Interest Stakeholder Matrix, stakeholders with high power and high interest are classified as:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq7" value="A">A. Monitor</label>
+            <label><input type="radio" name="mcq7" value="B">B. Keep Satisfied</label>
+            <label><input type="radio" name="mcq7" value="C">C. Keep Informed</label>
+            <label><input type="radio" name="mcq7" value="D">D. Key Players</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>8. The "Triple Bottom Line" (3Ps) model manages a firm based on:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq8" value="A">A. Price, Product, and Promotion</label>
+            <label><input type="radio" name="mcq8" value="B">B. Profits, People, and Planet</label>
+            <label><input type="radio" name="mcq8" value="C">C. Planning, Production, and Purchasing</label>
+            <label><input type="radio" name="mcq8" value="D">D. Politics, Performance, and Privacy</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>9. Which reasoning flaw involves calling an unethical act by a different name, such as calling cheating "teamwork"?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq9" value="A">A. Rationalization</label>
+            <label><input type="radio" name="mcq9" value="B">B. Labeling</label>
+            <label><input type="radio" name="mcq9" value="C">C. Blind Obedience</label>
+            <label><input type="radio" name="mcq9" value="D">D. Minimization</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>10. Kantian Ethics (Deontology) is primarily focused on:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq10" value="A">A. Foreseeable consequences and outcomes.</label>
+            <label><input type="radio" name="mcq10" value="B">B. Character excellences and moral habits.</label>
+            <label><input type="radio" name="mcq10" value="C">C. Duty, rules, and universal moral laws.</label>
+            <label><input type="radio" name="mcq10" value="D">D. Maximizing individual pleasure.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>11. How many Sustainable Development Goals (SDGs) are included in the UN 2030 Agenda?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq11" value="A">A. 10</label>
+            <label><input type="radio" name="mcq11" value="B">B. 12</label>
+            <label><input type="radio" name="mcq11" value="C">C. 17</label>
+            <label><input type="radio" name="mcq11" value="D">D. 25</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>12. In the Volkswagen emissions scandal, the "defeat device" caused cars to emit how much more nitrogen oxide than the legal limit?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq12" value="A">A. 2 times</label>
+            <label><input type="radio" name="mcq12" value="B">B. 10 times</label>
+            <label><input type="radio" name="mcq12" value="C">C. 40 times</label>
+            <label><input type="radio" name="mcq12" value="D">D. 100 times</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>13. Which layer of ethics involves the "The industry made me do it" rationalization?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq13" value="A">A. Layer 1</label>
+            <label><input type="radio" name="mcq13" value="B">B. Layer 2</label>
+            <label><input type="radio" name="mcq13" value="C">C. Layer 3</label>
+            <label><input type="radio" name="mcq13" value="D">D. Layer 4</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>14. A "Personal Credo" is described as:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq14" value="A">A. A company's legally binding mission statement.</label>
+            <label><input type="radio" name="mcq14" value="B">B. An individual's ethical anchor and pre-set compass for resisting pressure.</label>
+            <label><input type="radio" name="mcq14" value="C">C. A list of competitors' weaknesses.</label>
+            <label><input type="radio" name="mcq14" value="D">D. A government-mandated code of conduct.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>15. What is the primary difference between Industry 4.0 and Industry 5.0?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq15" value="A">A. Industry 5.0 is focused solely on AI.</label>
+            <label><input type="radio" name="mcq15" value="B">B. Industry 5.0 is more human-centric, resilient, and sustainable.</label>
+            <label><input type="radio" name="mcq15" value="C">C. Industry 4.0 uses no technology.</label>
+            <label><input type="radio" name="mcq15" value="D">D. There is no difference; they are the same concept.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>16. Which economy model is based on the shift from "ownership" to "usage" (access over ownership)?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq16" value="A">A. Linear Economy</label>
+            <label><input type="radio" name="mcq16" value="B">B. Performance Economy</label>
+            <label><input type="radio" name="mcq16" value="C">C. Traditional Economy</label>
+            <label><input type="radio" name="mcq16" value="D">D. Command Economy</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>17. "Corporate Shared Value" (CSV) differs from traditional CSR because it focuses on:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq17" value="A">A. Philanthropy and giving back.</label>
+            <label><input type="radio" name="mcq17" value="B">B. Maximizing competitive value by solving social problems.</label>
+            <label><input type="radio" name="mcq17" value="C">C. Only complying with the law.</label>
+            <label><input type="radio" name="mcq17" value="D">D. Minimizing all business operations.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>18. In the Volkswagen case, many employees used which mental trap to justify their actions?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq18" value="A">A. The Grandma Test</label>
+            <label><input type="radio" name="mcq18" value="B">B. Obedience to Authority ("They made me do it").</label>
+            <label><input type="radio" name="mcq18" value="C">C. Virtue Ethics</label>
+            <label><input type="radio" name="mcq18" value="D">D. The 17 SDGs</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>19. Aristotle’s Virtue Ethics is primarily about:</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq19" value="A">A. Following a specific list of 10 rules.</label>
+            <label><input type="radio" name="mcq19" value="B">B. Becoming a good person through character and moral habits.</label>
+            <label><input type="radio" name="mcq19" value="C">C. Calculating the cost-benefit of every decision.</label>
+            <label><input type="radio" name="mcq19" value="D">D. Avoiding all legal liability.</label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>20. According to the sources, what is a common critique of the "If it’s legal, then it’s ethical" standard?</p>
+          <div class="opts">
+            <label><input type="radio" name="mcq20" value="A">A. It is too expensive to follow.</label>
+            <label><input type="radio" name="mcq20" value="B">B. It ignores underlying ethical issues and risks that laws may not cover.</label>
+            <label><input type="radio" name="mcq20" value="C">C. It makes decision-making too complicated.</label>
+            <label><input type="radio" name="mcq20" value="D">D. It is only applicable to small businesses.</label>
+          </div>
+        </div>
+
+        <h2>Part 2: True/False Questions</h2>
+
+        <div class="q"><p>1. Ethics is the same thing as legal compliance; if an action is legal, it is always moral.</p>
+          <div class="opts">
+            <label><input type="radio" name="tf1" value="True">True</label>
+            <label><input type="radio" name="tf1" value="False">False</label>
+          </div>
+        </div>
+
+        <div class="q"><p>2. Utilitarianism can sometimes justify harming a minority for the gain of the majority.</p>
+          <div class="opts">
+            <label><input type="radio" name="tf2" value="True">True</label>
+            <label><input type="radio" name="tf2" value="False">False</label>
+          </div>
+        </div>
+
+        <div class="q"><p>3. In Layer 2 of Business Ethics, ethical issues can be fixed simply by providing individual employees with more training.</p>
+          <div class="opts">
+            <label><input type="radio" name="tf3" value="True">True</label>
+            <label><input type="*
