@@ -1,1 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Business Ethics &amp; Sustainability Practice Quiz (Test 2)</title>
+  <style>
+    :root{
+      --bg:#faf7f2;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#555;
+      --gold:#B8922A;
+      --shadow:0 3px 16px rgba(184,146,42,0.11);
+      --radius:10px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Montserrat,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap{
+      max-width:760px;
+      margin:40px auto;
+      padding:0 18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:32px 28px;
+    }
+    h1{margin:0 0 4px 0;font-size:1.5rem}
+    .sub{margin:0 0 22px 0;color:var(--muted);font-size:.95rem}
+    .progress-bar-wrap{
+      background:#eee;
+      border-radius:99px;
+      height:8px;
+      margin-bottom:10px;
+      overflow:hidden;
+    }
+    .progress-bar{
+      height:100%;
+      background:var(--gold);
+      border-radius:99px;
+      transition:width .3s;
+    }
+    .progress-label{
+      font-size:.85rem;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .question-area{min-height:220px}
+    .q-tag{
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:6px;
+    }
+    .q-text{
+      font-size:1.05rem;
+      font-weight:600;
+      margin:0 0 18px 0;
+      line-height:1.5;
+    }
+    .opts label{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:background .12s,border-color .12s;
+      margin-bottom:8px;
+      font-size:.97rem;
+    }
+    .opts label:hover{background:rgba(184,146,42,.10);border-color:rgba(184,146,42,.25)}
+    .opts input[type=radio]{accent-color:var(--gold);width:16px;height:16px;flex-shrink:0}
+    .opts label.selected{background:rgba(184,146,42,.13);border-color:var(--gold)}
+    .nav{
+      display:flex;
+      gap:12px;
+      margin-top:26px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      background:var(--bg);
+      color:#1a1a1a;
+      border:1px solid var(--gold);
+      border-radius:8px;
+      font-size:1rem;
+      font-weight:600;
+      font-family:inherit;
+      padding:10px 22px;
+      cursor:pointer;
+      transition:background .14s,color .14s;
+    }
+    .btn:hover:not(:disabled){background:var(--gold);color:#fff}
+    .btn:disabled{opacity:.4;cursor:not-allowed}
+    .btn-primary{background:var(--gold);color:#fff}
+    .btn-primary:hover:not(:disabled){background:#9a7920;border-color:#9a7920}
 
+    /* Results screen */
+    .results{display:none}
+    .score-box{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--gold);
+      margin:8px 0 4px 0;
+    }
+    .score-sub{color:var(--muted);margin:0 0 24px 0;font-size:.97rem}
+    .review-item{
+      padding:14px 14px;
+      border:1px solid rgba(184,146,42,.22);
+      border-radius:var(--radius);
+      margin:10px 0;
+      background:rgba(250,247,242,.5);
+    }
+    .review-item .rq{font-weight:600;margin:0 0 8px 0;font-size:.97rem}
+    .review-item .ra{font-size:.92rem;color:var(--muted)}
+    .review-item .ra span{font-weight:600}
+    .correct-mark{color:#2d7a2d;font-weight:700}
+    .wrong-mark{color:#c0392b;font-weight:700}
+    .quiz-screen{}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
+    <p class="sub">Test 2 — 20 MCQs + 20 True/False &nbsp;·&nbsp; One question at a time</p>
+
+    <!-- Quiz screen -->
+    <div class="quiz-screen" id="quizScreen">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progressBar" style="width:0%"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">Question 1 of 40</div>
+
+      <div class="question-area" id="questionArea"></div>
+
+      <div class="nav">
+        <button class="btn" id="btnPrev" onclick="navigate(-1)" disabled>&#8592; Previous</button>
+        <button class="btn" id="btnNext" onclick="navigate(1)" disabled>Next &#8594;</button>
+        <button class="btn btn-primary" id="btnFinish" onclick="showResults()" style="display:none">Finish &amp; See Score</button>
+      </div>
+    </div>
+
+    <!-- Results screen -->
+    <div class="results" id="resultsScreen">
+      <div class="score-box" id="scoreDisplay"></div>
+      <p class="score-sub" id="scoreSub"></p>
+      <button class="btn btn-primary" onclick="restartQuiz()" style="margin-bottom:24px">Retake Quiz</button>
+      <div id="reviewList"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  // MCQs
+  {section:"MCQ",num:1,
+   text:'What does the "Bathsheba Syndrome" describe in a business context?',
+   opts:["A. A psychological disorder affecting entry-level employees.",
+         "B. A legal loophole used to avoid environmental regulations.",
+         "C. A leadership failure caused by success, hubris, and a sense of invincibility.",
+         "D. A method for calculating the social impact of a project."],
+   correct:"C"},
+  {section:"MCQ",num:2,
+   text:'According to Howard Gardner, what is the fundamental question asked by an "ethical mind"?',
+   opts:["A. \"What is the maximum profit we can achieve?\"",
+         "B. \"If all workers in my profession did what I do, what would the world be like?\"",
+         "C. \"What is the legal risk of this specific action?\"",
+         "D. \"How can I follow orders more efficiently?\""],
+   correct:"B"},
+  {section:"MCQ",num:3,
+   text:'Which ethical theory evaluates the rightness of an action based on producing the "greatest good for the greatest number"?',
+   opts:["A. Virtue Ethics",
+         "B. Kantian Deontology",
+         "C. Utilitarianism",
+         "D. Ethical Egoism"],
+   correct:"C"},
+  {section:"MCQ",num:4,
+   text:'In the "Layers of Business Ethics," Layer 1 refers to:',
+   opts:["A. Decisions influenced by industry competition.",
+         "B. Individual choices and the ethical standards employees bring to an organization.",
+         "C. Decisions made based on societal cultural norms.",
+         "D. Organizational policies carried out by employees."],
+   correct:"B"},
+  {section:"MCQ",num:5,
+   text:"The Brundtland Report (1987) defines sustainable development as development that:",
+   opts:["A. Prioritizes economic growth above all other factors.",
+         "B. Meets the needs of the present without compromising the ability of future generations to meet their own needs.",
+         "C. Focuses exclusively on reducing the carbon footprint of manufacturing.",
+         "D. Eliminates the need for corporate profits."],
+   correct:"B"},
+  {section:"MCQ",num:6,
+   text:'Which "Practical Ethical Test" asks if you would be comfortable seeing your decision on the front page of a major publication?',
+   opts:["A. The Grandma Test",
+         "B. The Sleep Test",
+         "C. The Newspaper Test",
+         "D. The Categorical Imperative"],
+   correct:"C"},
+  {section:"MCQ",num:7,
+   text:"In the Power/Interest Stakeholder Matrix, stakeholders with high power and high interest are classified as:",
+   opts:["A. Monitor",
+         "B. Keep Satisfied",
+         "C. Keep Informed",
+         "D. Key Players"],
+   correct:"D"},
+  {section:"MCQ",num:8,
+   text:'The "Triple Bottom Line" (3Ps) model manages a firm based on:',
+   opts:["A. Price, Product, and Promotion",
+         "B. Profits, People, and Planet",
+         "C. Planning, Production, and Purchasing",
+         "D. Politics, Performance, and Privacy"],
+   correct:"B"},
+  {section:"MCQ",num:9,
+   text:'Which reasoning flaw involves calling an unethical act by a different name, such as calling cheating "teamwork"?',
+   opts:["A. Rationalization",
+         "B. Labeling",
+         "C. Blind Obedience",
+         "D. Minimization"],
+   correct:"B"},
+  {section:"MCQ",num:10,
+   text:"Kantian Ethics (Deontology) is primarily focused on:",
+   opts:["A. Foreseeable consequences and outcomes.",
+         "B. Character excellences and moral habits.",
+         "C. Duty, rules, and universal moral laws.",
+         "D. Maximizing individual pleasure."],
+   correct:"C"},
+  {section:"MCQ",num:11,
+   text:"How many Sustainable Development Goals (SDGs) are included in the UN 2030 Agenda?",
+   opts:["A. 10","B. 12","C. 17","D. 25"],
+   correct:"C"},
+  {section:"MCQ",num:12,
+   text:'In the Volkswagen emissions scandal, the "defeat device" caused cars to emit how much more nitrogen oxide than the legal limit?',
+   opts:["A. 2 times","B. 10 times","C. 40 times","D. 100 times"],
+   correct:"C"},
+  {section:"MCQ",num:13,
+   text:'Which layer of ethics involves the "The industry made me do it" rationalization?',
+   opts:["A. Layer 1","B. Layer 2","C. Layer 3","D. Layer 4"],
+   correct:"C"},
+  {section:"MCQ",num:14,
+   text:'A "Personal Credo" is described as:',
+   opts:["A. A company's legally binding mission statement.",
+         "B. An individual's ethical anchor and pre-set compass for resisting pressure.",
+         "C. A list of competitors' weaknesses.",
+         "D. A government-mandated code of conduct."],
+   correct:"B"},
+  {section:"MCQ",num:15,
+   text:"What is the primary difference between Industry 4.0 and Industry 5.0?",
+   opts:["A. Industry 5.0 is focused solely on AI.",
+         "B. Industry 5.0 is more human-centric, resilient, and sustainable.",
+         "C. Industry 4.0 uses no technology.",
+         "D. There is no difference; they are the same concept."],
+   correct:"B"},
+  {section:"MCQ",num:16,
+   text:'Which economy model is based on the shift from "ownership" to "usage" (access over ownership)?',
+   opts:["A. Linear Economy",
+         "B. Performance Economy",
+         "C. Traditional Economy",
+         "D. Command Economy"],
+   correct:"B"},
+  {section:"MCQ",num:17,
+   text:'"Corporate Shared Value" (CSV) differs from traditional CSR because it focuses on:',
+   opts:["A. Philanthropy and giving back.",
+         "B. Maximizing competitive value by solving social problems.",
+         "C. Only complying with the law.",
+         "D. Minimizing all business operations."],
+   correct:"B"},
+  {section:"MCQ",num:18,
+   text:"In the Volkswagen case, many employees used which mental trap to justify their actions?",
+   opts:["A. The Grandma Test",
+         "B. Obedience to Authority (\"They made me do it\").",
+         "C. Virtue Ethics",
+         "D. The 17 SDGs"],
+   correct:"B"},
+  {section:"MCQ",num:19,
+   text:"Aristotle's Virtue Ethics is primarily about:",
+   opts:["A. Following a specific list of 10 rules.",
+         "B. Becoming a good person through character and moral habits.",
+         "C. Calculating the cost-benefit of every decision.",
+         "D. Avoiding all legal liability."],
+   correct:"B"},
+  {section:"MCQ",num:20,
+   text:'According to the sources, what is a common critique of the "If it\'s legal, then it\'s ethical" standard?',
+   opts:["A. It is too expensive to follow.",
+         "B. It ignores underlying ethical issues and risks that laws may not cover.",
+         "C. It makes decision-making too complicated.",
+         "D. It is only applicable to small businesses."],
+   correct:"B"},
+  // True/False
+  {section:"T/F",num:1,
+   text:"Ethics is the same thing as legal compliance; if an action is legal, it is always moral.",
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:2,
+   text:"Utilitarianism can sometimes justify harming a minority for the gain of the majority.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:3,
+   text:"In Layer 2 of Business Ethics, ethical issues can be fixed simply by providing individual employees with more training.",
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:4,
+   text:'The "Slippery Slope" refers to the idea that small ethical compromises rarely lead to bigger ones.',
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:5,
+   text:"According to the UN, sustainable development must meet present needs without compromising future generations.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:6,
+   text:"Whistleblowing is a form of external disclosure used when employees have no control over executive-level decisions.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:7,
+   text:"The Circular Economy is designed to produce no waste and pollution by design.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:8,
+   text:'Kantian ethics suggests we should treat people as a "means to an end" rather than "ends in themselves."',
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:9,
+   text:'The "Sleep Test" is a practical tool to check if a decision allows you to have peace of mind.',
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:10,
+   text:"Volkswagen was required to operate under a federal monitor from 2017 to 2020 to reform its culture.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:11,
+   text:'A person with an "analytical mind" deals primarily in risks to human life rather than probabilities.',
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:12,
+   text:"Rationalization is the mental trick of changing language to justify unethical behavior.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:13,
+   text:"Secondary stakeholders are those who have a direct financial contract with the company.",
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:14,
+   text:"Corporate Social Responsibility (CSR) often touches every part of a business, including the supply chain and HR.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:15,
+   text:'The "Grandma Test" involves asking what the legal consequences of an action would be.',
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:16,
+   text:"Success can paradoxically make a leader more susceptible to ethical failure.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:17,
+   text:'"Corporate Shared Value" (CSV) is essentially the same thing as philanthropy.',
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:18,
+   text:"The EPA alleged that Volkswagen cars emitted up to 40 times the legal amount of nitrogen oxide.",
+   opts:["True","False"],correct:"True"},
+  {section:"T/F",num:19,
+   text:"Virtue Ethics is often criticized for being too rigid and rule-based.",
+   opts:["True","False"],correct:"False"},
+  {section:"T/F",num:20,
+   text:"An ethical credo helps individuals resist pressure from an organization's culture.",
+   opts:["True","False"],correct:"True"}
+];
+
+let current = 0;
+const answers = new Array(questions.length).fill(null);
+
+function renderQuestion(idx) {
+  const q = questions[idx];
+  const total = questions.length;
+  const pct = Math.round(((idx) / total) * 100);
+
+  document.getElementById("progressBar").style.width = pct + "%";
+  document.getElementById("progressLabel").textContent =
+    "Question " + (idx + 1) + " of " + total +
+    " \u00b7 " + q.section + " #" + q.num;
+
+  let html = '<div class="q-tag">' + q.section + ' &mdash; Question ' + q.num + '</div>';
+  html += '<p class="q-text">' + escHtml(q.text) + '</p>';
+  html += '<div class="opts">';
+  q.opts.forEach(function(opt, i) {
+    const val = q.section === "T/F" ? opt : opt.charAt(0);
+    const checked = answers[idx] === val ? ' checked' : '';
+    const selected = answers[idx] === val ? ' selected' : '';
+    html += '<label' + selected + '>' +
+      '<input type="radio" name="q" value="' + escAttr(val) + '"' + checked + '> ' +
+      escHtml(opt) +
+      '</label>';
+  });
+  html += '</div>';
+
+  document.getElementById("questionArea").innerHTML = html;
+
+  // Attach change listeners
+  document.querySelectorAll('input[name="q"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      answers[idx] = this.value;
+      // Highlight selected label
+      document.querySelectorAll('.opts label').forEach(function(l) { l.classList.remove('selected'); });
+      this.parentElement.classList.add('selected');
+      updateNav();
+    });
+  });
+
+  updateNav();
+}
+
+function updateNav() {
+  const idx = current;
+  const total = questions.length;
+  const hasAnswer = answers[idx] !== null;
+  const isLast = idx === total - 1;
+
+  document.getElementById("btnPrev").disabled = (idx === 0);
+  document.getElementById("btnNext").disabled = !hasAnswer || isLast;
+  document.getElementById("btnNext").style.display = isLast ? "none" : "";
+  document.getElementById("btnFinish").style.display = isLast ? "" : "none";
+  document.getElementById("btnFinish").disabled = !hasAnswer;
+}
+
+function navigate(dir) {
+  current += dir;
+  if (current < 0) current = 0;
+  if (current >= questions.length) current = questions.length - 1;
+  renderQuestion(current);
+}
+
+function showResults() {
+  let score = 0;
+  questions.forEach(function(q, i) {
+    if (answers[i] === q.correct) score++;
+  });
+
+  document.getElementById("quizScreen").style.display = "none";
+  const rs = document.getElementById("resultsScreen");
+  rs.style.display = "block";
+
+  document.getElementById("scoreDisplay").textContent = score + " / " + questions.length;
+  const pct = Math.round((score / questions.length) * 100);
+  document.getElementById("scoreSub").textContent =
+    pct + "% correct — " + (pct >= 70 ? "Great work!" : "Keep studying and try again!");
+
+  let html = "<h2 style='margin:0 0 14px 0;font-size:1.1rem'>Answer Review</h2>";
+  questions.forEach(function(q, i) {
+    const isCorrect = answers[i] === q.correct;
+    const studentAns = answers[i] !== null ? answers[i] : "(no answer)";
+    html += '<div class="review-item">' +
+      '<p class="rq">' + q.section + ' #' + q.num + ': ' + escHtml(q.text) + '</p>' +
+      '<div class="ra">' +
+        'Your answer: <span>' + escHtml(studentAns) + '</span> &nbsp;' +
+        (isCorrect
+          ? '<span class="correct-mark">&#10003; Correct</span>'
+          : '<span class="wrong-mark">&#10007; Incorrect</span> &mdash; Correct answer: <span>' + escHtml(q.correct) + '</span>') +
+      '</div>' +
+      '</div>';
+  });
+  document.getElementById("reviewList").innerHTML = html;
+}
+
+function restartQuiz() {
+  answers.fill(null);
+  current = 0;
+  document.getElementById("resultsScreen").style.display = "none";
+  document.getElementById("quizScreen").style.display = "";
+  renderQuestion(0);
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+function escAttr(str) {
+  return String(str).replace(/"/g, "&quot;");
+}
+
+// Init
+renderQuestion(0);
+</script>
+</body>
+</html>
