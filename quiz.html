@@ -224,8 +224,6 @@
         const radio = document.createElement('input');
         radio.type = 'radio';
         radio.name = 'q';
-        radio.value = opt.charAt(0); // first character = A/B/C/D or T/F first letter... use full value for T/F
-        // For T/F options the "value" is the whole text
         radio.value = opt;
         if (userAnswers[idx] === opt) {
           radio.checked = true;
@@ -249,7 +247,7 @@
       const isLast = idx === total - 1;
       const nextBtn = document.getElementById('nextBtn');
       nextBtn.textContent = isLast ? 'Submit Quiz' : 'Next →';
-      nextBtn.className = isLast ? 'btn btn-primary' : 'btn btn-primary';
+      nextBtn.className = 'btn btn-primary';
     }
 
     function go(dir) {
