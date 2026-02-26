@@ -5,6 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Business Ethics &amp; Sustainability Practice Quiz (Test 2)</title>
   <style>
+    /* ===== Ferragamo-style Header Band ===== */
+.header {
+  background: #1a1a1a;
+  padding: 40px 40px 32px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0; /* looks like a top band */
+}
+
+.header::before {
+  content: 'B';
+  position: absolute;
+  right: -20px;
+  top: -30px;
+  font-family: Georgia, "Cormorant Garamond", serif;
+  font-size: 260px;
+  color: rgba(184,146,42,0.08);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.gold-line {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 16px;
+}
+
+.header-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-family: Georgia, "Cormorant Garamond", serif;
+  font-size: clamp(26px, 4vw, 40px);
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.header h1 span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.header-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Progress strip below header (like Ferragamo) */
+.progress-strip {
+  background: #1a1a1a;
+  padding: 0 40px 24px;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 22px;
+}
+
+/* Re-skin your existing progress elements inside the strip */
+.progress-strip .progress-label {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+
+.progress-strip .progress-bar-wrap {
+  background: rgba(255,255,255,0.12);
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 0;
+}
+
+.progress-strip .progress-bar {
+  border-radius: 2px;
+}
+
+@media (max-width: 600px) {
+  .header { padding: 28px 20px 24px; }
+  .progress-strip { padding: 0 20px 20px; }
+}
     :root {
       --bg: #faf7f2;
       --card: #ffffff;
@@ -143,9 +232,29 @@
 </head>
 <body>
   <div class="wrap">
-    <div class="card" id="quizCard">
-      <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
-      <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
+
+  <!-- NEW header band -->
+  <div class="header">
+    <div class="header-label">Business Ethics · Assessment</div>
+    <div class="gold-line"></div>
+    <h1>Business Ethics &amp; <span>Sustainability</span></h1>
+    <div class="header-sub">Test 2 &nbsp;·&nbsp; 20 MCQs + 20 True/False</div>
+  </div>
+
+  <!-- NEW progress strip (reuse same IDs so JS keeps working) -->
+  <div class="progress-strip">
+    <div class="progress-label" id="progressLabel">Question 1 of 40</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar" style="width:2.5%"></div>
+    </div>
+  </div>
+
+  <!-- Existing quiz card -->
+  <div class="card" id="quizCard">
+    <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
+    <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
+
+    <!-- REMOVE the old progress markup from inside this card -->
 
       <!-- Progress -->
       <div class="progress-label" id="progressLabel">Question 1 of 40</div>
@@ -357,23 +466,31 @@ document.getElementById('warnBox').textContent = '';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function restartQuiz() {
-      answers.fill(null);
-      current = 0;
-      document.getElementById('quizCard').innerHTML = `
-        <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
-        <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
-        <div class="progress-label" id="progressLabel"></div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:2.5%"></div></div>
-        <div id="questionArea"></div>
-        <div class="actions">
-          <button class="btn" id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
-          <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
-          <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()" style="display:none">Submit Answers</button>
-        </div>
-        <div class="unanswered-warn" id="warnBox"></div>`;
-      renderQuestion(0);
-    }
+   function restartQuiz() {
+  answers.fill(null);
+  current = 0;
+
+  // Rebuild only the quiz card content (NOT the progress elements)
+  document.getElementById('quizCard').innerHTML = `
+    <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
+    <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
+
+    <div id="questionArea"></div>
+
+    <div class="actions">
+      <button class="btn" id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+
+    <div class="unanswered-warn" id="warnBox"></div>
+  `;
+
+  // Reset the progress UI (which is now outside the card)
+  document.getElementById('progressBar').style.width = '2.5%';
+  document.getElementById('progressLabel').textContent = `Question 1 of ${total}`;
+
+  renderQuestion(0);
+}
 
     function escHtml(str) {
       return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
