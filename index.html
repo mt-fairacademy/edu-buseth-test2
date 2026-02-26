@@ -366,151 +366,94 @@
 
 <div class="main">
 
-  <!-- ── QUESTION 1 ── T/F -->
-  <div class="question-card active" data-q="1" data-correct="false">
-    <div class="q-badge">
-      <div class="q-num">1</div>
-      <div class="q-type tf">True / False</div>
-    </div>
-    <div class="q-text">The Ferragamo Code of Ethics applies exclusively to employees and corporate bodies of the parent company, Salvatore Ferragamo S.p.A.</div>
-    <div class="options tf-options">
-      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
-      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
-    </div>
-    <div class="feedback" id="fb1"></div>
-  </div>
+  <script>
+    const questions = [
+      // MCQs (Part 1)
+      { section: "Part 1: Multiple Choice", text: '1. What does the "Bathsheba Syndrome" describe in a business context?',
+        type: 'mcq', opts: ['A. A psychological disorder affecting entry-level employees.','B. A legal loophole used to avoid environmental regulations.','C. A leadership failure caused by success, hubris, and a sense of invincibility.','D. A method for calculating the social impact of a project.'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '2. According to Howard Gardner, what is the fundamental question asked by an "ethical mind"?',
+        type: 'mcq', opts: ['A. "What is the maximum profit we can achieve?"','B. "If all workers in my profession did what I do, what would the world be like?"','C. "What is the legal risk of this specific action?"','D. "How can I follow orders more efficiently?"'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '3. Which ethical theory evaluates the rightness of an action based on producing the "greatest good for the greatest number"?',
+        type: 'mcq', opts: ['A. Virtue Ethics','B. Kantian Deontology','C. Utilitarianism','D. Ethical Egoism'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '4. In the "Layers of Business Ethics," Layer 1 refers to:',
+        type: 'mcq', opts: ['A. Decisions influenced by industry competition.','B. Individual choices and the ethical standards employees bring to an organization.','C. Decisions made based on societal cultural norms.','D. Organizational policies carried out by employees.'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '5. The Brundtland Report (1987) defines sustainable development as development that:',
+        type: 'mcq', opts: ['A. Prioritizes economic growth above all other factors.','B. Meets the needs of the present without compromising the ability of future generations to meet their own needs.','C. Focuses exclusively on reducing the carbon footprint of manufacturing.','D. Eliminates the need for corporate profits.'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '6. Which "Practical Ethical Test" asks if you would be comfortable seeing your decision on the front page of a major publication?',
+        type: 'mcq', opts: ['A. The Grandma Test','B. The Sleep Test','C. The Newspaper Test','D. The Categorical Imperative'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '7. In the Power/Interest Stakeholder Matrix, stakeholders with high power and high interest are classified as:',
+        type: 'mcq', opts: ['A. Monitor','B. Keep Satisfied','C. Keep Informed','D. Key Players'], answer: 'D' },
+      { section: "Part 1: Multiple Choice", text: '8. The "Triple Bottom Line" (3Ps) model manages a firm based on:',
+        type: 'mcq', opts: ['A. Price, Product, and Promotion','B. Profits, People, and Planet','C. Planning, Production, and Purchasing','D. Politics, Performance, and Privacy'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '9. Which reasoning flaw involves calling an unethical act by a different name, such as calling cheating "teamwork"?',
+        type: 'mcq', opts: ['A. Rationalization','B. Labeling','C. Blind Obedience','D. Minimization'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '10. Kantian Ethics (Deontology) is primarily focused on:',
+        type: 'mcq', opts: ['A. Foreseeable consequences and outcomes.','B. Character excellences and moral habits.','C. Duty, rules, and universal moral laws.','D. Maximizing individual pleasure.'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '11. How many Sustainable Development Goals (SDGs) are included in the UN 2030 Agenda?',
+        type: 'mcq', opts: ['A. 10','B. 12','C. 17','D. 25'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '12. In the Volkswagen emissions scandal, the "defeat device" caused cars to emit how much more nitrogen oxide than the legal limit?',
+        type: 'mcq', opts: ['A. 2 times','B. 10 times','C. 40 times','D. 100 times'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '13. Which layer of ethics involves the "The industry made me do it" rationalization?',
+        type: 'mcq', opts: ['A. Layer 1','B. Layer 2','C. Layer 3','D. Layer 4'], answer: 'C' },
+      { section: "Part 1: Multiple Choice", text: '14. A "Personal Credo" is described as:',
+        type: 'mcq', opts: ['A. A company\'s legally binding mission statement.','B. An individual\'s ethical anchor and pre-set compass for resisting pressure.','C. A list of competitors\' weaknesses.','D. A government-mandated code of conduct.'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '15. What is the primary difference between Industry 4.0 and Industry 5.0?',
+        type: 'mcq', opts: ['A. Industry 5.0 is focused solely on AI.','B. Industry 5.0 is more human-centric, resilient, and sustainable.','C. Industry 4.0 uses no technology.','D. There is no difference; they are the same concept.'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '16. Which economy model is based on the shift from "ownership" to "usage" (access over ownership)?',
+        type: 'mcq', opts: ['A. Linear Economy','B. Performance Economy','C. Traditional Economy','D. Command Economy'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '17. "Corporate Shared Value" (CSV) differs from traditional CSR because it focuses on:',
+        type: 'mcq', opts: ['A. Philanthropy and giving back.','B. Maximizing competitive value by solving social problems.','C. Only complying with the law.','D. Minimizing all business operations.'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '18. In the Volkswagen case, many employees used which mental trap to justify their actions?',
+        type: 'mcq', opts: ['A. The Grandma Test','B. Obedience to Authority ("They made me do it").','C. Virtue Ethics','D. The 17 SDGs'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '19. Aristotle\'s Virtue Ethics is primarily about:',
+        type: 'mcq', opts: ['A. Following a specific list of 10 rules.','B. Becoming a good person through character and moral habits.','C. Calculating the cost-benefit of every decision.','D. Avoiding all legal liability.'], answer: 'B' },
+      { section: "Part 1: Multiple Choice", text: '20. According to the sources, what is a common critique of the "If it\'s legal, then it\'s ethical" standard?',
+        type: 'mcq', opts: ['A. It is too expensive to follow.','B. It ignores underlying ethical issues and risks that laws may not cover.','C. It makes decision-making too complicated.','D. It is only applicable to small businesses.'], answer: 'B' },
+      // True/False (Part 2)
+      { section: "Part 2: True / False", text: '1. Ethics is the same thing as legal compliance; if an action is legal, it is always moral.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '2. Utilitarianism can sometimes justify harming a minority for the gain of the majority.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '3. In Layer 2 of Business Ethics, ethical issues can be fixed simply by providing individual employees with more training.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '4. The "Slippery Slope" refers to the idea that small ethical compromises rarely lead to bigger ones.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '5. According to the UN, sustainable development must meet present needs without compromising future generations.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '6. Whistleblowing is a form of external disclosure used when employees have no control over executive-level decisions.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '7. The Circular Economy is designed to produce no waste and pollution by design.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '8. Kantian ethics suggests we should treat people as a "means to an end" rather than "ends in themselves."',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '9. The "Sleep Test" is a practical tool to check if a decision allows you to have peace of mind.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '10. Volkswagen was required to operate under a federal monitor from 2017 to 2020 to reform its culture.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '11. A person with an "analytical mind" deals primarily in risks to human life rather than probabilities.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '12. Rationalization is the mental trick of changing language to justify unethical behavior.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '13. Secondary stakeholders are those who have a direct financial contract with the company.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '14. Corporate Social Responsibility (CSR) often touches every part of a business, including the supply chain and HR.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '15. The "Grandma Test" involves asking what the legal consequences of an action would be.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '16. Success can paradoxically make a leader more susceptible to ethical failure.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '17. "Corporate Shared Value" (CSV) is essentially the same thing as philanthropy.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '18. The EPA alleged that Volkswagen cars emitted up to 40 times the legal amount of nitrogen oxide.',
+        type: 'tf', answer: 'True' },
+      { section: "Part 2: True / False", text: '19. Virtue Ethics is often criticized for being too rigid and rule-based.',
+        type: 'tf', answer: 'False' },
+      { section: "Part 2: True / False", text: '20. An ethical credo helps individuals resist pressure from an organization\'s culture.',
+        type: 'tf', answer: 'True' }
+    ];
 
-  <!-- ── QUESTION 2 ── T/F -->
-  <div class="question-card" data-q="2" data-correct="true">
-    <div class="q-badge">
-      <div class="q-num">2</div>
-      <div class="q-type tf">True / False</div>
-    </div>
-    <div class="q-text">Ferragamo has obtained the SA8000 certification, demonstrating a formal commitment to social accountability in its labour practices.</div>
-    <div class="options tf-options">
-      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
-      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
-    </div>
-    <div class="feedback" id="fb2"></div>
-  </div>
-
-  <!-- ── QUESTION 3 ── T/F -->
-  <div class="question-card" data-q="3" data-correct="false">
-    <div class="q-badge">
-      <div class="q-num">3</div>
-      <div class="q-type tf">True / False</div>
-    </div>
-    <div class="q-text">According to the Code, economic interest may justify deviations from the principles of correctness and honesty when the financial stakes are sufficiently high.</div>
-    <div class="options tf-options">
-      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
-      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
-    </div>
-    <div class="feedback" id="fb3"></div>
-  </div>
-
-  <!-- ── QUESTION 4 ── T/F -->
-  <div class="question-card" data-q="4" data-correct="true">
-    <div class="q-badge">
-      <div class="q-num">4</div>
-      <div class="q-type tf">True / False</div>
-    </div>
-    <div class="q-text">Ferragamo signed the Fashion Pact in 2019 and has set a target of 100% renewable energy across all its locations by 2030.</div>
-    <div class="options tf-options">
-      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
-      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
-    </div>
-    <div class="feedback" id="fb4"></div>
-  </div>
-
-  <!-- ── QUESTION 5 ── T/F -->
-  <div class="question-card" data-q="5" data-correct="false">
-    <div class="q-badge">
-      <div class="q-num">5</div>
-      <div class="q-type tf">True / False</div>
-    </div>
-    <div class="q-text">The Ethics Committee is appointed directly by the CEO of Salvatore Ferragamo S.p.A.</div>
-    <div class="options tf-options">
-      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
-      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
-    </div>
-    <div class="feedback" id="fb5"></div>
-  </div>
-
-  <!-- ── QUESTION 6 ── MC -->
-  <div class="question-card" data-q="6" data-correct="b">
-    <div class="q-badge">
-      <div class="q-num">6</div>
-      <div class="q-type mc">Multiple Choice</div>
-    </div>
-    <div class="q-text">What is the consequence for a supplier who violates the principles established in the Ferragamo Code of Ethics?</div>
-    <div class="options">
-      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">The supplier receives a formal written warning and a 90-day remediation plan.</div></div>
-      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">The violation constitutes grounds for termination of the contractual relationship.</div></div>
-      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The supplier is referred to an independent arbitration panel for resolution.</div></div>
-    </div>
-    <div class="feedback" id="fb6"></div>
-  </div>
-
-  <!-- ── QUESTION 7 ── MC -->
-  <div class="question-card" data-q="7" data-correct="c">
-    <div class="q-badge">
-      <div class="q-num">7</div>
-      <div class="q-type mc">Multiple Choice</div>
-    </div>
-    <div class="q-text">By what year does Ferragamo aim to reduce its Scope 1, 2, and 3 greenhouse gas emissions by 42%, compared to the 2019 baseline?</div>
-    <div class="options">
-      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">2025</div></div>
-      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">2030</div></div>
-      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">2029</div></div>
-    </div>
-    <div class="feedback" id="fb7"></div>
-  </div>
-
-  <!-- ── QUESTION 8 ── MC -->
-  <div class="question-card" data-q="8" data-correct="a">
-    <div class="q-badge">
-      <div class="q-num">8</div>
-      <div class="q-type mc">Multiple Choice</div>
-    </div>
-    <div class="q-text">According to the Code, which of the following best describes Ferragamo's approach to personal data management?</div>
-    <div class="options">
-      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Data is collected only for identified, explicit, and legitimate purposes and retained for the strictly necessary period.</div></div>
-      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Data may be retained indefinitely to support future marketing and product development activities.</div></div>
-      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Data collection is unrestricted provided that subjects have signed a general consent form at the point of purchase.</div></div>
-    </div>
-    <div class="feedback" id="fb8"></div>
-  </div>
-
-  <!-- ── QUESTION 9 ── MC -->
-  <div class="question-card" data-q="9" data-correct="b">
-    <div class="q-badge">
-      <div class="q-num">9</div>
-      <div class="q-type mc">Multiple Choice</div>
-    </div>
-    <div class="q-text">Which of the following statements correctly describes the scope of Ferragamo's non-discrimination policy?</div>
-    <div class="options">
-      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">It applies only to internal hiring processes and promotions within the Group.</div></div>
-      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">It covers both internal relations and transactions with third parties, including age, ethnicity, gender identity, sexual orientation, and disability.</div></div>
-      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">It applies exclusively to employees working in countries where anti-discrimination laws are enforced.</div></div>
-    </div>
-    <div class="feedback" id="fb9"></div>
-  </div>
-
-  <!-- ── QUESTION 10 ── MC -->
-  <div class="question-card" data-q="10" data-correct="c">
-    <div class="q-badge">
-      <div class="q-num">10</div>
-      <div class="q-type mc">Multiple Choice</div>
-    </div>
-    <div class="q-text">Which legislative framework is explicitly referenced in the Code as the basis for Ferragamo's Organizational Policy and its integration with the Code of Ethics?</div>
-    <div class="options">
-      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">EU Directive 2022/2464 (CSRD)</div></div>
-      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Italian Law No. 262/2005 on market abuse</div></div>
-      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Italian Legislative Decree No. 231/2001 on corporate criminal liability</div></div>
-    </div>
-    <div class="feedback" id="fb10"></div>
-  </div>
-
+   </div>
+    
   <!-- NAV -->
   <div class="nav" id="nav">
     <button class="btn btn-ghost" id="prevBtn" onclick="navigate(-1)" disabled>← Previous</button>
