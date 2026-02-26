@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Business Ethics &amp; Sustainability Practice Quiz (Test 2)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* ===== Ferragamo-style Header Band ===== */
 .header {
@@ -19,7 +20,7 @@
   position: absolute;
   right: -20px;
   top: -30px;
-  font-family: Georgia, "Cormorant Garamond", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 260px;
   color: rgba(184,146,42,0.08);
   line-height: 1;
@@ -43,7 +44,7 @@
 }
 
 .header h1 {
-  font-family: Georgia, "Cormorant Garamond", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(26px, 4vw, 40px);
   color: #fff;
   font-weight: 400;
@@ -63,7 +64,7 @@
   letter-spacing: 1px;
 }
 
-/* Progress strip below header (like Ferragamo) */
+/* Progress strip below header */
 .progress-strip {
   background: #1a1a1a;
   padding: 0 40px 24px;
@@ -71,7 +72,6 @@
   margin-bottom: 22px;
 }
 
-/* Re-skin your existing progress elements inside the strip */
 .progress-strip .progress-label {
   color: rgba(255,255,255,0.55);
   margin-bottom: 10px;
@@ -86,9 +86,7 @@
   margin-bottom: 0;
 }
 
-.progress-strip .progress-bar {
-  border-radius: 2px;
-}
+.progress-strip .progress-bar { border-radius: 2px; }
 
 @media (max-width: 600px) {
   .header { padding: 28px 20px 24px; }
@@ -233,15 +231,15 @@
 <body>
   <div class="wrap">
 
-  <!-- NEW header band -->
+  <!-- NEW: Header -->
   <div class="header">
     <div class="header-label">Business Ethics · Assessment</div>
     <div class="gold-line"></div>
     <h1>Business Ethics &amp; <span>Sustainability</span></h1>
-    <div class="header-sub">Test 2 &nbsp;·&nbsp; 20 MCQs + 20 True/False</div>
+    <div class="header-sub">Test 2 · 20 MCQs + 20 True/False</div>
   </div>
 
-  <!-- NEW progress strip (reuse same IDs so JS keeps working) -->
+  <!-- NEW: Progress strip (keep SAME IDs) -->
   <div class="progress-strip">
     <div class="progress-label" id="progressLabel">Question 1 of 40</div>
     <div class="progress-bar-wrap">
@@ -253,6 +251,7 @@
   <div class="card" id="quizCard">
     <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
     <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
+
 
     <!-- REMOVE the old progress markup from inside this card -->
 
