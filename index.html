@@ -1,370 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Ethics Quiz</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --nero: #1a1a1a;
-    --oro: #B8922A;
-    --oro-light: #D4AF6A;
-    --panna: #FAF7F2;
-    --rosso: #C0392B;
-    --grigio: #6a6a6a;
-    --grigio-light: #e8e4de;
-    --verde: #2D7A4F;
-    --bianco: #ffffff;
-  }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    background: var(--panna);
-    color: var(--nero);
-    min-height: 100vh;
-    padding: 0;
-  }
-
-  /* HEADER */
-  .header {
-    background: var(--nero);
-    padding: 40px 40px 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: 'F';
-    position: absolute;
-    right: -20px;
-    top: -30px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 260px;
-    color: rgba(184,146,42,0.08);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 16px; }
-  .header-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--oro);
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(26px, 4vw, 40px);
-    color: var(--bianco);
-    font-weight: 400;
-    line-height: 1.2;
-  }
-  .header h1 span { color: var(--oro); font-style: italic; }
-  .header-sub {
-    font-size: 11px;
-    color: #888;
-    margin-top: 10px;
-    letter-spacing: 1px;
-  }
-
-  /* PROGRESS */
-  .progress-wrap {
-    background: var(--nero);
-    padding: 0 40px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .progress-bar-bg {
-    flex: 1;
-    height: 3px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: var(--oro);
-    border-radius: 2px;
-    transition: width 0.5s ease;
-    width: 0%;
-  }
-  .progress-text {
-    font-size: 11px;
-    color: #888;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    min-width: 70px;
-    text-align: right;
-  }
-
-  /* MAIN */
-  .main { max-width: 780px; margin: 0 auto; padding: 40px 24px 60px; }
-
-  /* QUESTION CARD */
-  .question-card {
-    background: var(--bianco);
-    border-radius: 2px;
-    padding: 36px 40px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-    display: none;
-    animation: fadeSlide 0.4s ease forwards;
-    position: relative;
-  }
-  .question-card.active { display: block; }
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .q-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .q-num {
-    background: var(--nero);
-    color: var(--oro);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-  }
-  .q-type {
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--grigio);
-    font-weight: 600;
-    border: 1px solid var(--grigio-light);
-    padding: 4px 10px;
-  }
-  .q-type.tf { border-color: var(--oro); color: var(--oro); }
-  .q-type.mc { border-color: var(--nero); color: var(--nero); }
-
-  .q-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    line-height: 1.6;
-    color: var(--nero);
-    margin-bottom: 28px;
-    font-weight: 400;
-  }
-
-  /* OPTIONS */
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
-    border: 1.5px solid var(--grigio-light);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    background: var(--panna);
-    user-select: none;
-  }
-  .option:hover:not(.disabled) {
-    border-color: var(--oro);
-    background: #fdf9f0;
-  }
-  .option.selected {
-    border-color: var(--oro);
-    background: #fdf9f0;
-  }
-  .option.correct {
-    border-color: var(--verde);
-    background: #f0faf5;
-  }
-  .option.wrong {
-    border-color: var(--rosso);
-    background: #fdf0ef;
-  }
-  .option.disabled { cursor: default; pointer-events: none; }
-
-  .opt-indicator {
-    width: 28px;
-    height: 28px;
-    border: 1.5px solid var(--grigio-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    flex-shrink: 0;
-    transition: all 0.2s;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--grigio);
-  }
-  .option.selected .opt-indicator { border-color: var(--oro); color: var(--oro); background: #fff8ec; }
-  .option.correct .opt-indicator { border-color: var(--verde); color: var(--verde); background: #edfaf4; }
-  .option.wrong .opt-indicator { border-color: var(--rosso); color: var(--rosso); background: #fdecea; }
-
-  .opt-label {
-    font-size: 13.5px;
-    line-height: 1.5;
-    color: var(--nero);
-    flex: 1;
-  }
-  .opt-icon { font-size: 16px; flex-shrink: 0; }
-
-  /* T/F special layout */
-  .tf-options { flex-direction: row; gap: 14px; }
-  .tf-options .option { flex: 1; justify-content: center; flex-direction: column; text-align: center; padding: 20px; gap: 8px; }
-  .tf-options .opt-indicator { display: none; }
-  .tf-icon { font-size: 28px; }
-  .tf-label { font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-
-  /* FEEDBACK */
-  .feedback {
-    margin-top: 18px;
-    padding: 14px 18px;
-    border-left: 3px solid;
-    font-size: 12.5px;
-    line-height: 1.7;
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .feedback.show { display: block; }
-  .feedback.correct-fb { border-color: var(--verde); background: #f2fbf7; color: #1a5e38; }
-  .feedback.wrong-fb { border-color: var(--rosso); background: #fdf2f1; color: #922b21; }
-  .feedback strong { font-weight: 700; }
-
-  /* NAV */
-  .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30px;
-  }
-  .btn {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .btn-primary { background: var(--nero); color: var(--bianco); }
-  .btn-primary:hover { background: var(--oro); }
-  .btn-ghost { background: transparent; color: var(--grigio); border: 1.5px solid var(--grigio-light); }
-  .btn-ghost:hover { border-color: var(--nero); color: var(--nero); }
-  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  /* RESULTS */
-  #results {
-    display: none;
-    text-align: center;
-    padding: 20px 0 40px;
-    animation: fadeSlide 0.5s ease forwards;
-  }
-  .result-header {
-    background: var(--nero);
-    padding: 50px 40px;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: hidden;
-  }
-  .result-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at top, rgba(184,146,42,0.15) 0%, transparent 70%);
-  }
-  .result-score {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 90px;
-    color: var(--oro);
-    line-height: 1;
-    font-weight: 600;
-    position: relative;
-  }
-  .result-score sup { font-size: 36px; vertical-align: super; }
-  .result-label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: #888;
-    text-transform: uppercase;
-    margin-top: 8px;
-    position: relative;
-  }
-  .result-verdict {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    color: var(--bianco);
-    margin-top: 20px;
-    font-style: italic;
-    position: relative;
-  }
-  .review-list { text-align: left; margin-bottom: 28px; }
-  .review-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--grigio-light);
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .review-item:last-child { border-bottom: none; }
-  .review-dot {
-    width: 24px;
-    height: 24px;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    font-weight: 700;
-  }
-  .review-dot.ok { background: var(--verde); color: white; }
-  .review-dot.ko { background: var(--rosso); color: white; }
-  .review-q { font-family: 'Cormorant Garamond', serif; font-size: 16px; margin-bottom: 4px; }
-  .review-ans { font-size: 11.5px; color: var(--grigio); }
-  .review-ans span { font-weight: 700; }
-  .btn-restart { margin-top: 10px; }
-
-  @media (max-width: 600px) {
-    .question-card { padding: 24px 20px; }
-    .header { padding: 28px 20px 24px; }
-    .progress-wrap { padding: 0 20px 20px; }
-    .main { padding: 28px 16px 48px; }
-    .tf-options { flex-direction: row; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business Ethics &amp; Sustainability Practice Quiz (Test 2)</title>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #555;
+      --gold: #B8922A;
+      --shadow: 0 3px 16px rgba(184,146,42,0.11);
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Montserrat, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 18px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 28px;
+    }
+    h1 { margin: 0 0 4px 0; font-size: 1.5rem; }
+    .sub { margin: 0 0 20px 0; color: var(--muted); }
+    .progress-bar-wrap {
+      background: rgba(184,146,42,0.15);
+      border-radius: 999px;
+      height: 7px;
+      margin-bottom: 22px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      background: var(--gold);
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s;
+    }
+    .progress-label {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .section-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .q-text {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin: 0 0 18px 0;
+      line-height: 1.5;
+    }
+    .opts label {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #1a1a1a;
+      border: 1px solid transparent;
+      margin-bottom: 7px;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .opts label:hover { background: rgba(184,146,42,0.10); border-color: rgba(184,146,42,0.30); }
+    .opts input[type="radio"] { margin-right: 10px; accent-color: var(--gold); }
+    .opts label.selected {
+      background: rgba(184,146,42,0.13);
+      border-color: var(--gold);
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+      align-items: center;
+    }
+    .btn {
+      background: var(--bg);
+      color: #1a1a1a;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 22px;
+      cursor: pointer;
+      transition: background 0.14s, color 0.14s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover { background: var(--gold); color: #fff; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-primary { background: var(--gold); color: #fff; }
+    .btn-primary:hover { background: #9a7520; border-color: #9a7520; }
+    #submitBtn.btn {
+      font-size: 1.15rem;
+      padding: 12px 28px;
+    }
+    .results { text-align: center; }
+    .results .big-score {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin: 12px 0 4px 0;
+    }
+    .results .score-sub { color: var(--muted); margin-bottom: 22px; }
+    .results .breakdown {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+    .results .breakdown-item {
+      background: rgba(184,146,42,0.08);
+      border: 1px solid rgba(184,146,42,0.25);
+      border-radius: 10px;
+      padding: 14px 22px;
+      min-width: 130px;
+    }
+    .results .breakdown-item strong { display: block; font-size: 1.5rem; color: var(--gold); }
+    .unanswered-warn {
+      color: #c0392b;
+      font-size: 0.93rem;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="card" id="quizCard">
+      <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
+      <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
 
-<div class="header">
-  <div class="header-label">Business Ethics · Assessment</div>
-  <div class="gold-line"></div>
-  <h1>Business – <span>Ethics</span></h1>
-  <div class="header-sub">10 Questions &nbsp;·&nbsp; True / False &nbsp;&amp;&nbsp; Multiple Choice</div>
-</div>
+      <!-- Progress -->
+      <div class="progress-label" id="progressLabel">Question 1 of 40</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progressBar" style="width:2.5%"></div>
+      </div>
 
-<div class="progress-wrap">
-  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
-  <div class="progress-text" id="progressText">0 / 10</div>
-</div>
+      <!-- Question area -->
+      <div id="questionArea"></div>
 
-<div class="main">
+      <!-- Navigation -->
+      <div class="actions">
+        <button class="btn" id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
+        <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()" style="display:none">Submit Answers</button>
+      </div>
+      <div class="unanswered-warn" id="warnBox"></div>
+    </div>
+  </div>
 
   <script>
     const questions = [
@@ -452,146 +251,123 @@
         type: 'tf', answer: 'True' }
     ];
 
-   </div>
-    
-  <!-- NAV -->
-  <div class="nav" id="nav">
-    <button class="btn btn-ghost" id="prevBtn" onclick="navigate(-1)" disabled>← Previous</button>
-    <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)" disabled>Next →</button>
-  </div>
+    const total = questions.length;
+    let current = 0;
+    const answers = new Array(total).fill(null);
 
-  <!-- RESULTS -->
-  <div id="results">
-    <div class="result-header">
-      <div class="result-score" id="scoreDisplay"><sup></sup><span id="scoreNum">0</span><sup>/10</sup></div>
-      <div class="result-label">Final Score</div>
-      <div class="result-verdict" id="verdict"></div>
-    </div>
-    <div class="review-list" id="reviewList"></div>
-    <button class="btn btn-primary btn-restart" onclick="restartQuiz()">↺ &nbsp; Restart Quiz</button>
-  </div>
+    function renderQuestion(idx) {
+      const q = questions[idx];
+      const isTF = q.type === 'tf';
+      const opts = isTF ? ['True', 'False'] : q.opts;
+      const letter = (i) => isTF ? opts[i] : ['A','B','C','D'][i];
 
-</div>
-function selectOption(card, option) {
-  const qNum = parseInt(card.dataset.q);
-  const val = option.dataset.val;
-  const correct = card.dataset.correct;
-  if (answers[qNum] !== undefined) return;
+      let html = `<div class="section-label">${q.section}</div>`;
+      html += `<p class="q-text">${escHtml(q.text)}</p>`;
+      html += `<div class="opts">`;
+      opts.forEach((opt, i) => {
+        const val = letter(i);
+        const sel = answers[idx] === val ? ' class="selected"' : '';
+        html += `<label${sel}><input type="radio" name="opt" value="${escHtml(val)}"${answers[idx] === val ? ' checked' : ''}> ${escHtml(opt)}</label>`;
+      });
+      html += `</div>`;
 
-  answers[qNum] = val;
-  const isCorrect = val === correct;
-  const fb = document.getElementById('fb' + qNum);
-  const qData = questions[qNum - 1];
+      document.getElementById('questionArea').innerHTML = html;
 
-  // Mark all options
-  card.querySelectorAll('.option').forEach(o => {
-    o.classList.add('disabled');
-    if (o.dataset.val === correct) o.classList.add('correct');
-    if (o.dataset.val === val && !isCorrect) o.classList.add('wrong');
-    if (o.dataset.val === val && isCorrect) o.classList.add('correct');
-  });
+      // Highlight selected on click
+      document.querySelectorAll('.opts input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          answers[idx] = radio.value;
+          document.querySelectorAll('.opts label').forEach(l => l.classList.remove('selected'));
+          radio.parentElement.classList.add('selected');
+          document.getElementById('warnBox').textContent = '';
+        });
+      });
 
-  fb.innerHTML = isCorrect ? qData.explanation.correct : qData.explanation.wrong;
-  fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+      // Update progress (min 2.5% so bar is always visible on first question)
+      const pct = Math.max(2.5, Math.round(((idx + 1) / total) * 100));
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressLabel').textContent = `Question ${idx + 1} of ${total}`;
 
-  updateProgress();
-  updateNavButtons();
-}
-
-// Attach listeners
-cards.forEach(card => {
-  card.querySelectorAll('.option').forEach(opt => {
-    opt.addEventListener('click', () => selectOption(card, opt));
-  });
-});
-
-function showResults() {
-  document.getElementById('nav').style.display = 'none';
-  cards.forEach(c => c.style.display = 'none');
-  const resultsEl = document.getElementById('results');
-  resultsEl.style.display = 'block';
-
-  let score = 0;
-  questions.forEach(q => {
-    if (answers[q.q] === q.correct) score++;
-  });
-
-  document.getElementById('scoreNum').textContent = score;
-
-  const verdicts = [
-    [0,3, "Keep studying — revisit the Code carefully."],
-    [4,5, "Fair understanding — some principles need review."],
-    [6,7, "Good grasp of the fundamentals."],
-    [8,9, "Excellent — strong command of the Code."],
-    [10,10, "Perfect score — outstanding mastery."]
-  ];
-  let verdict = '';
-  for (const [min, max, label] of verdicts) {
-    if (score >= min && score <= max) { verdict = label; break; }
-  }
-  document.getElementById('verdict').textContent = verdict;
-
-  const reviewList = document.getElementById('reviewList');
-  questions.forEach(q => {
-    const userAns = answers[q.q];
-    const isOk = userAns === q.correct;
-    const item = document.createElement('div');
-    item.className = 'review-item';
-
-    const card = document.querySelector(`[data-q="${q.q}"]`);
-    const qText = card.querySelector('.q-text').textContent.trim().substring(0, 80) + '…';
-
-    let displayAns = userAns;
-    if (q.type === 'tf') {
-      displayAns = userAns === 'true' ? 'True' : 'False';
-    } else {
-      displayAns = 'Option ' + userAns.toUpperCase();
-    }
-    let displayCorrect = q.correct;
-    if (q.type === 'tf') {
-      displayCorrect = q.correct === 'true' ? 'True' : 'False';
-    } else {
-      displayCorrect = 'Option ' + q.correct.toUpperCase();
+      // Buttons
+      document.getElementById('prevBtn').disabled = idx === 0;
+      const isLast = idx === total - 1;
+      document.getElementById('nextBtn').style.display = isLast ? 'none' : 'inline-block';
+      document.getElementById('submitBtn').style.display = isLast ? 'inline-block' : 'none';
+      document.getElementById('warnBox').textContent = '';
     }
 
-    item.innerHTML = `
-      <div class="review-dot ${isOk ? 'ok' : 'ko'}">${isOk ? '✓' : '✗'}</div>
-      <div>
-        <div class="review-q">Q${q.q}: ${qText}</div>
-        <div class="review-ans">
-          Your answer: <span style="color:${isOk ? 'var(--verde)' : 'var(--rosso)'}">${displayAns}</span>
-          ${!isOk ? `&nbsp;·&nbsp; Correct: <span style="color:var(--verde)">${displayCorrect}</span>` : ''}
+    function navigate(dir) {
+      if (answers[current] === null && dir === 1) {
+        document.getElementById('warnBox').textContent = 'Please select an answer before continuing.';
+        return;
+      }
+      current += dir;
+      if (current < 0) current = 0;
+      if (current >= total) current = total - 1;
+      renderQuestion(current);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function submitQuiz() {
+      if (answers[current] === null) {
+        document.getElementById('warnBox').textContent = 'Please select an answer before submitting.';
+        return;
+      }
+      const unanswered = answers.filter(a => a === null).length;
+      if (unanswered > 0) {
+        document.getElementById('warnBox').textContent = `You have ${unanswered} unanswered question(s). Please go back and answer them.`;
+        return;
+      }
+
+      let mcqScore = 0, tfScore = 0;
+      questions.forEach((q, i) => {
+        const userAns = answers[i];
+        const correct = q.answer;
+        const isCorrect = userAns === correct;
+        if (isCorrect) {
+          if (q.type === 'mcq') mcqScore++;
+          else tfScore++;
+        }
+      });
+      const total40 = mcqScore + tfScore;
+
+      document.getElementById('quizCard').innerHTML = `
+        <div class="results">
+          <h1>Quiz Complete!</h1>
+          <div class="big-score">${total40} / 40</div>
+          <p class="score-sub">You scored ${total40} out of 40 total questions.</p>
+          <div class="breakdown">
+            <div class="breakdown-item"><strong>${mcqScore} / 20</strong>Multiple Choice</div>
+            <div class="breakdown-item"><strong>${tfScore} / 20</strong>True / False</div>
+          </div>
+          <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+        </div>`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function restartQuiz() {
+      answers.fill(null);
+      current = 0;
+      document.getElementById('quizCard').innerHTML = `
+        <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
+        <p class="sub">Test 2 — 20 MCQs + 20 True/False</p>
+        <div class="progress-label" id="progressLabel"></div>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:2.5%"></div></div>
+        <div id="questionArea"></div>
+        <div class="actions">
+          <button class="btn" id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
+          <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
+          <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()" style="display:none">Submit Answers</button>
         </div>
-      </div>
-    `;
-    reviewList.appendChild(item);
-  });
-}
+        <div class="unanswered-warn" id="warnBox"></div>`;
+      renderQuestion(0);
+    }
 
-function restartQuiz() {
-  answers = {};
-  current = 0;
-  document.getElementById('results').style.display = 'none';
-  document.getElementById('reviewList').innerHTML = '';
-  document.getElementById('nav').style.display = 'flex';
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
 
-  cards.forEach((card, i) => {
-    card.style.display = '';
-    card.classList.remove('active');
-    card.querySelectorAll('.option').forEach(o => {
-      o.classList.remove('selected', 'correct', 'wrong', 'disabled');
-    });
-    const qNum = parseInt(card.dataset.q);
-    const fb = document.getElementById('fb' + qNum);
-    if (fb) { fb.className = 'feedback'; fb.innerHTML = ''; }
-  });
-
-  cards[0].classList.add('active');
-  updateProgress();
-  updateNavButtons();
-}
-
-updateNavButtons();
-</script>
+    renderQuestion(0);
+  </script>
 </body>
 </html>
