@@ -158,8 +158,10 @@
 
       <!-- Navigation -->
       <div class="actions">
-        <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
-      </div>
+<div class="actions">
+  <button class="btn" id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
+  <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
+</div>      </div>
       <div class="unanswered-warn" id="warnBox"></div>
     </div>
   </div>
@@ -288,25 +290,24 @@
       document.getElementById('progressLabel').textContent = `Question ${idx + 1} of ${total}`;
 
      // Buttons
-document.getElementById('prevBtn').disabled = idx === 0;
-
-const isLast = idx === total - 1;
+const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
-nextBtn.style.display = 'inline-block';
+prevBtn.disabled = idx === 0;
 
+const isLast = idx === total - 1;
 if (isLast) {
   nextBtn.textContent = 'Submit Quiz';
-  nextBtn.className = 'btn btn-success';
-  nextBtn.onclick = submitQuiz;      // <-- must match your submit function name
+  nextBtn.className = 'btn btn-primary';
+  nextBtn.onclick = submitQuiz;
 } else {
   nextBtn.textContent = 'Next →';
   nextBtn.className = 'btn btn-primary';
-  nextBtn.onclick = nextQuestion;    // <-- must match your next function name
+  nextBtn.onclick = () => navigate(1);
 }
 
 document.getElementById('warnBox').textContent = '';
-
+} // <-- closes renderQuestion
     function navigate(dir) {
       if (answers[current] === null && dir === 1) {
         document.getElementById('warnBox').textContent = 'Please select an answer before continuing.';
