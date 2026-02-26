@@ -158,9 +158,7 @@
 
       <!-- Navigation -->
       <div class="actions">
-        <button class="btn" id="prevBtn" onclick="navigate(-1)" disabled>&#8592; Previous</button>
         <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)">Next &#8594;</button>
-        <button class="btn btn-primary" id="submitBtn" onclick="submitQuiz()" style="display:none">Submit Answers</button>
       </div>
       <div class="unanswered-warn" id="warnBox"></div>
     </div>
@@ -289,13 +287,25 @@
       document.getElementById('progressBar').style.width = pct + '%';
       document.getElementById('progressLabel').textContent = `Question ${idx + 1} of ${total}`;
 
-      // Buttons
-      document.getElementById('prevBtn').disabled = idx === 0;
-      const isLast = idx === total - 1;
-      document.getElementById('nextBtn').style.display = isLast ? 'none' : 'inline-block';
-      document.getElementById('submitBtn').style.display = isLast ? 'inline-block' : 'none';
-      document.getElementById('warnBox').textContent = '';
-    }
+     // Buttons
+document.getElementById('prevBtn').disabled = idx === 0;
+
+const isLast = idx === total - 1;
+const nextBtn = document.getElementById('nextBtn');
+
+nextBtn.style.display = 'inline-block';
+
+if (isLast) {
+  nextBtn.textContent = 'Submit Quiz';
+  nextBtn.className = 'btn btn-success';
+  nextBtn.onclick = submitQuiz;      // <-- must match your submit function name
+} else {
+  nextBtn.textContent = 'Next →';
+  nextBtn.className = 'btn btn-primary';
+  nextBtn.onclick = nextQuestion;    // <-- must match your next function name
+}
+
+document.getElementById('warnBox').textContent = '';
 
     function navigate(dir) {
       if (answers[current] === null && dir === 1) {
