@@ -255,15 +255,13 @@
       const q = questions[idx];
       const isTF = q.type === 'tf';
       const opts = isTF ? ['True', 'False'] : q.opts;
-      const letter = (i) => isTF ? opts[i] : ['A','B','C','D'][i];
 
       let html = `<div class="section-label">${q.section}</div>`;
       html += `<p class="q-text">${escHtml(q.text)}</p>`;
       html += `<div class="opts">`;
-      opts.forEach((opt, i) => {
-        const val = letter(i);
-        const sel = answers[idx] === val ? ' class="selected"' : '';
-        html += `<label${sel}><input type="radio" name="opt" value="${escHtml(val)}"${answers[idx] === val ? ' checked' : ''}> ${escHtml(opt)}</label>`;
+      opts.forEach((opt) => {
+        const sel = answers[idx] === opt ? ' class="selected"' : '';
+        html += `<label${sel}><input type="radio" name="opt" value="${escHtml(opt)}"${answers[idx] === opt ? ' checked' : ''}> ${escHtml(opt)}</label>`;
       });
       html += `</div>`;
 
@@ -318,7 +316,10 @@
       let mcqScore = 0, tfScore = 0;
       questions.forEach((q, i) => {
         const userAns = answers[i];
-        const correct = q.answer;
+        // For MCQ, q.answer is a letter key (A/B/C/D); map it to the full option text
+        const correct = q.type === 'mcq'
+          ? q.opts[['A','B','C','D'].indexOf(q.answer)]
+          : q.answer;
         const isCorrect = userAns === correct;
         if (isCorrect) {
           if (q.type === 'mcq') mcqScore++;
