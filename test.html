@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Ethics &amp; Sustainability Practice Quiz</title>
+  <style>
+    body {
+      font-family: Montserrat, Arial, sans-serif;
+      background: #faf7f2;
+      color: #222;
+      margin: 0;
+      padding: 24px 12px 48px;
+    }
+    .quiz-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #B8922A;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #555;
+      margin-bottom: 32px;
+      font-size: 0.97rem;
+    }
+    h2 {
+      font-size: 1.12rem;
+      color: #B8922A;
+      border-bottom: 2px solid #B8922A;
+      padding-bottom: 6px;
+      margin-top: 36px;
+      margin-bottom: 18px;
+    }
+    .question-block {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(184,146,42,0.09);
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+    .question-text {
+      font-weight: 600;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .options label {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: background 0.12s;
+      font-size: 0.97rem;
+    }
+    .options label:hover {
+      background: #faf0d7;
+    }
+    .options input[type="radio"] {
+      margin-right: 8px;
+      accent-color: #B8922A;
+    }
+    .tf-options label {
+      display: inline-block;
+      margin-right: 18px;
+      padding: 7px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.97rem;
+      transition: background 0.12s;
+    }
+    .tf-options label:hover {
+      background: #faf0d7;
+    }
+    .tf-options input[type="radio"] {
+      margin-right: 6px;
+      accent-color: #B8922A;
+    }
+    .submit-area {
+      text-align: center;
+      margin-top: 32px;
+    }
+    .course-link {
+      background: #faf7f2;
+      color: #1a1a1a;
+      border: 1px solid #B8922A;
+      border-radius: 8px;
+      font-size: 1.03rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 11px 32px;
+      transition: background .14s, color .14s, border .14s;
+      display: inline-block;
+      cursor: pointer;
+      font-family: Montserrat, Arial, sans-serif;
+    }
+    .course-link:hover {
+      background: #B8922A;
+      color: #fff;
+      border-color: #B8922A;
+    }
+    #score-result {
+      margin-top: 22px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #B8922A;
+      display: none;
+    }
+    #score-warning {
+      color: #c0392b;
+      margin-top: 10px;
+      display: none;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-wrap">
+    <h1>Business Ethics &amp; Sustainability Practice Quiz</h1>
+    <p class="subtitle">Answer all 40 questions, then click Submit to see your score.</p>
+
+    <!-- Part 1: MCQs -->
+    <h2>Part 1: Multiple Choice Questions</h2>
+
+    <div class="question-block">
+      <div class="question-text">1. What does the "Bathsheba Syndrome" describe in a business context?</div>
+      <div class="options">
+        <label><input type="radio" name="q1" value="A"> A. A psychological disorder affecting entry-level employees.</label>
+        <label><input type="radio" name="q1" value="B"> B. A legal loophole used to avoid environmental regulations.</label>
+        <label><input type="radio" name="q1" value="C"> C. A leadership failure caused by success, hubris, and a sense of invincibility.</label>
+        <label><input type="radio" name="q1" value="D"> D. A method for calculating the social impact of a project.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">2. According to Howard Gardner, what is the fundamental question asked by an "ethical mind"?</div>
+      <div class="options">
+        <label><input type="radio" name="q2" value="A"> A. "What is the maximum profit we can achieve?"</label>
+        <label><input type="radio" name="q2" value="B"> B. "If all workers in my profession did what I do, what would the world be like?"</label>
+        <label><input type="radio" name="q2" value="C"> C. "What is the legal risk of this specific action?"</label>
+        <label><input type="radio" name="q2" value="D"> D. "How can I follow orders more efficiently?"</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">3. Which ethical theory evaluates the rightness of an action based on producing the "greatest good for the greatest number"?</div>
+      <div class="options">
+        <label><input type="radio" name="q3" value="A"> A. Virtue Ethics</label>
+        <label><input type="radio" name="q3" value="B"> B. Kantian Deontology</label>
+        <label><input type="radio" name="q3" value="C"> C. Utilitarianism</label>
+        <label><input type="radio" name="q3" value="D"> D. Ethical Egoism</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">4. In the "Layers of Business Ethics," Layer 1 refers to:</div>
+      <div class="options">
+        <label><input type="radio" name="q4" value="A"> A. Decisions influenced by industry competition.</label>
+        <label><input type="radio" name="q4" value="B"> B. Individual choices and the ethical standards employees bring to an organization.</label>
+        <label><input type="radio" name="q4" value="C"> C. Decisions made based on societal cultural norms.</label>
+        <label><input type="radio" name="q4" value="D"> D. Organizational policies carried out by employees.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">5. The Brundtland Report (1987) defines sustainable development as development that:</div>
+      <div class="options">
+        <label><input type="radio" name="q5" value="A"> A. Prioritizes economic growth above all other factors.</label>
+        <label><input type="radio" name="q5" value="B"> B. Meets the needs of the present without compromising the ability of future generations to meet their own needs.</label>
+        <label><input type="radio" name="q5" value="C"> C. Focuses exclusively on reducing the carbon footprint of manufacturing.</label>
+        <label><input type="radio" name="q5" value="D"> D. Eliminates the need for corporate profits.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">6. Which "Practical Ethical Test" asks if you would be comfortable seeing your decision on the front page of a major publication?</div>
+      <div class="options">
+        <label><input type="radio" name="q6" value="A"> A. The Grandma Test</label>
+        <label><input type="radio" name="q6" value="B"> B. The Sleep Test</label>
+        <label><input type="radio" name="q6" value="C"> C. The Newspaper Test</label>
+        <label><input type="radio" name="q6" value="D"> D. The Categorical Imperative</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">7. In the Power/Interest Stakeholder Matrix, stakeholders with high power and high interest are classified as:</div>
+      <div class="options">
+        <label><input type="radio" name="q7" value="A"> A. Monitor</label>
+        <label><input type="radio" name="q7" value="B"> B. Keep Satisfied</label>
+        <label><input type="radio" name="q7" value="C"> C. Keep Informed</label>
+        <label><input type="radio" name="q7" value="D"> D. Key Players</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">8. The "Triple Bottom Line" (3Ps) model manages a firm based on:</div>
+      <div class="options">
+        <label><input type="radio" name="q8" value="A"> A. Price, Product, and Promotion</label>
+        <label><input type="radio" name="q8" value="B"> B. Profits, People, and Planet</label>
+        <label><input type="radio" name="q8" value="C"> C. Planning, Production, and Purchasing</label>
+        <label><input type="radio" name="q8" value="D"> D. Politics, Performance, and Privacy</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">9. Which reasoning flaw involves calling an unethical act by a different name, such as calling cheating "teamwork"?</div>
+      <div class="options">
+        <label><input type="radio" name="q9" value="A"> A. Rationalization</label>
+        <label><input type="radio" name="q9" value="B"> B. Labeling</label>
+        <label><input type="radio" name="q9" value="C"> C. Blind Obedience</label>
+        <label><input type="radio" name="q9" value="D"> D. Minimization</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">10. Kantian Ethics (Deontology) is primarily focused on:</div>
+      <div class="options">
+        <label><input type="radio" name="q10" value="A"> A. Foreseeable consequences and outcomes.</label>
+        <label><input type="radio" name="q10" value="B"> B. Character excellences and moral habits.</label>
+        <label><input type="radio" name="q10" value="C"> C. Duty, rules, and universal moral laws.</label>
+        <label><input type="radio" name="q10" value="D"> D. Maximizing individual pleasure.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">11. How many Sustainable Development Goals (SDGs) are included in the UN 2030 Agenda?</div>
+      <div class="options">
+        <label><input type="radio" name="q11" value="A"> A. 10</label>
+        <label><input type="radio" name="q11" value="B"> B. 12</label>
+        <label><input type="radio" name="q11" value="C"> C. 17</label>
+        <label><input type="radio" name="q11" value="D"> D. 25</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">12. In the Volkswagen emissions scandal, the "defeat device" caused cars to emit how much more nitrogen oxide than the legal limit?</div>
+      <div class="options">
+        <label><input type="radio" name="q12" value="A"> A. 2 times</label>
+        <label><input type="radio" name="q12" value="B"> B. 10 times</label>
+        <label><input type="radio" name="q12" value="C"> C. 40 times</label>
+        <label><input type="radio" name="q12" value="D"> D. 100 times</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">13. Which layer of ethics involves the "The industry made me do it" rationalization?</div>
+      <div class="options">
+        <label><input type="radio" name="q13" value="A"> A. Layer 1</label>
+        <label><input type="radio" name="q13" value="B"> B. Layer 2</label>
+        <label><input type="radio" name="q13" value="C"> C. Layer 3</label>
+        <label><input type="radio" name="q13" value="D"> D. Layer 4</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">14. A "Personal Credo" is described as:</div>
+      <div class="options">
+        <label><input type="radio" name="q14" value="A"> A. A company's legally binding mission statement.</label>
+        <label><input type="radio" name="q14" value="B"> B. An individual's ethical anchor and pre-set compass for resisting pressure.</label>
+        <label><input type="radio" name="q14" value="C"> C. A list of competitors' weaknesses.</label>
+        <label><input type="radio" name="q14" value="D"> D. A government-mandated code of conduct.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">15. What is the primary difference between Industry 4.0 and Industry 5.0?</div>
+      <div class="options">
+        <label><input type="radio" name="q15" value="A"> A. Industry 5.0 is focused solely on AI.</label>
+        <label><input type="radio" name="q15" value="B"> B. Industry 5.0 is more human-centric, resilient, and sustainable.</label>
+        <label><input type="radio" name="q15" value="C"> C. Industry 4.0 uses no technology.</label>
+        <label><input type="radio" name="q15" value="D"> D. There is no difference; they are the same concept.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">16. Which economy model is based on the shift from "ownership" to "usage" (access over ownership)?</div>
+      <div class="options">
+        <label><input type="radio" name="q16" value="A"> A. Linear Economy</label>
+        <label><input type="radio" name="q16" value="B"> B. Performance Economy</label>
+        <label><input type="radio" name="q16" value="C"> C. Traditional Economy</label>
+        <label><input type="radio" name="q16" value="D"> D. Command Economy</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">17. "Corporate Shared Value" (CSV) differs from traditional CSR because it focuses on:</div>
+      <div class="options">
+        <label><input type="radio" name="q17" value="A"> A. Philanthropy and giving back.</label>
+        <label><input type="radio" name="q17" value="B"> B. Maximizing competitive value by solving social problems.</label>
+        <label><input type="radio" name="q17" value="C"> C. Only complying with the law.</label>
+        <label><input type="radio" name="q17" value="D"> D. Minimizing all business operations.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">18. In the Volkswagen case, many employees used which mental trap to justify their actions?</div>
+      <div class="options">
+        <label><input type="radio" name="q18" value="A"> A. The Grandma Test</label>
+        <label><input type="radio" name="q18" value="B"> B. Obedience to Authority ("They made me do it")</label>
+        <label><input type="radio" name="q18" value="C"> C. Virtue Ethics</label>
+        <label><input type="radio" name="q18" value="D"> D. The 17 SDGs</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">19. Aristotle's Virtue Ethics is primarily about:</div>
+      <div class="options">
+        <label><input type="radio" name="q19" value="A"> A. Following a specific list of 10 rules.</label>
+        <label><input type="radio" name="q19" value="B"> B. Becoming a good person through character and moral habits.</label>
+        <label><input type="radio" name="q19" value="C"> C. Calculating the cost-benefit of every decision.</label>
+        <label><input type="radio" name="q19" value="D"> D. Avoiding all legal liability.</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">20. According to the sources, what is a common critique of the "If it's legal, then it's ethical" standard?</div>
+      <div class="options">
+        <label><input type="radio" name="q20" value="A"> A. It is too expensive to follow.</label>
+        <label><input type="radio" name="q20" value="B"> B. It ignores underlying ethical issues and risks that laws may not cover.</label>
+        <label><input type="radio" name="q20" value="C"> C. It makes decision-making too complicated.</label>
+        <label><input type="radio" name="q20" value="D"> D. It is only applicable to small businesses.</label>
+      </div>
+    </div>
+
+    <!-- Part 2: True/False -->
+    <h2>Part 2: True / False Questions</h2>
+
+    <div class="question-block">
+      <div class="question-text">1. Ethics is the same thing as legal compliance; if an action is legal, it is always moral.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf1" value="True"> True</label>
+        <label><input type="radio" name="tf1" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">2. Utilitarianism can sometimes justify harming a minority for the gain of the majority.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf2" value="True"> True</label>
+        <label><input type="radio" name="tf2" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">3. In Layer 2 of Business Ethics, ethical issues can be fixed simply by providing individual employees with more training.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf3" value="True"> True</label>
+        <label><input type="radio" name="tf3" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">4. The "Slippery Slope" refers to the idea that small ethical compromises rarely lead to bigger ones.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf4" value="True"> True</label>
+        <label><input type="radio" name="tf4" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">5. According to the UN, sustainable development must meet present needs without compromising future generations.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf5" value="True"> True</label>
+        <label><input type="radio" name="tf5" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">6. Whistleblowing is a form of external disclosure used when employees have no control over executive-level decisions.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf6" value="True"> True</label>
+        <label><input type="radio" name="tf6" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">7. The Circular Economy is designed to produce no waste and pollution by design.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf7" value="True"> True</label>
+        <label><input type="radio" name="tf7" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">8. Kantian ethics suggests we should treat people as a "means to an end" rather than "ends in themselves."</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf8" value="True"> True</label>
+        <label><input type="radio" name="tf8" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">9. The "Sleep Test" is a practical tool to check if a decision allows you to have peace of mind.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf9" value="True"> True</label>
+        <label><input type="radio" name="tf9" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">10. Volkswagen was required to operate under a federal monitor from 2017 to 2020 to reform its culture.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf10" value="True"> True</label>
+        <label><input type="radio" name="tf10" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">11. A person with an "analytical mind" deals primarily in risks to human life rather than probabilities.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf11" value="True"> True</label>
+        <label><input type="radio" name="tf11" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">12. Rationalization is the mental trick of changing language to justify unethical behavior.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf12" value="True"> True</label>
+        <label><input type="radio" name="tf12" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">13. Secondary stakeholders are those who have a direct financial contract with the company.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf13" value="True"> True</label>
+        <label><input type="radio" name="tf13" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">14. Corporate Social Responsibility (CSR) often touches every part of a business, including the supply chain and HR.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf14" value="True"> True</label>
+        <label><input type="radio" name="tf14" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">15. The "Grandma Test" involves asking what the legal consequences of an action would be.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf15" value="True"> True</label>
+        <label><input type="radio" name="tf15" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">16. Success can paradoxically make a leader more susceptible to ethical failure.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf16" value="True"> True</label>
+        <label><input type="radio" name="tf16" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">17. "Corporate Shared Value" (CSV) is essentially the same thing as philanthropy.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf17" value="True"> True</label>
+        <label><input type="radio" name="tf17" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">18. The EPA alleged that Volkswagen cars emitted up to 40 times the legal amount of nitrogen oxide.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf18" value="True"> True</label>
+        <label><input type="radio" name="tf18" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">19. Virtue Ethics is often criticized for being too rigid and rule-based.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf19" value="True"> True</label>
+        <label><input type="radio" name="tf19" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-text">20. An ethical credo helps individuals resist pressure from an organization's culture.</div>
+      <div class="tf-options">
+        <label><input type="radio" name="tf20" value="True"> True</label>
+        <label><input type="radio" name="tf20" value="False"> False</label>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button class="course-link" onclick="submitQuiz()">Submit Quiz</button>
+      <div id="score-warning">Please answer all 40 questions before submitting.</div>
+      <div id="score-result"></div>
+    </div>
+  </div>
+
+  <script>
+    const MCQ_ANSWERS = {
+      q1: 'C', q2: 'B', q3: 'C', q4: 'B', q5: 'B',
+      q6: 'C', q7: 'D', q8: 'B', q9: 'B', q10: 'C',
+      q11: 'C', q12: 'C', q13: 'C', q14: 'B', q15: 'B',
+      q16: 'B', q17: 'B', q18: 'B', q19: 'B', q20: 'B'
+    };
+
+    const TF_ANSWERS = {
+      tf1: 'False', tf2: 'True', tf3: 'False', tf4: 'False', tf5: 'True',
+      tf6: 'True', tf7: 'True', tf8: 'False', tf9: 'True', tf10: 'True',
+      tf11: 'False', tf12: 'True', tf13: 'False', tf14: 'True', tf15: 'False',
+      tf16: 'True', tf17: 'False', tf18: 'True', tf19: 'False', tf20: 'True'
+    };
+
+    function getSelected(name) {
+      const radios = document.getElementsByName(name);
+      for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) return radios[i].value;
+      }
+      return null;
+    }
+
+    function submitQuiz() {
+      const allAnswers = Object.assign({}, MCQ_ANSWERS, TF_ANSWERS);
+      let missing = false;
+      for (const name in allAnswers) {
+        if (getSelected(name) === null) { missing = true; break; }
+      }
+
+      const warning = document.getElementById('score-warning');
+      const result = document.getElementById('score-result');
+
+      if (missing) {
+        warning.style.display = 'block';
+        result.style.display = 'none';
+        return;
+      }
+      warning.style.display = 'none';
+
+      let score = 0;
+      for (const key in MCQ_ANSWERS) {
+        if (getSelected(key) === MCQ_ANSWERS[key]) score++;
+      }
+      for (const key in TF_ANSWERS) {
+        if (getSelected(key) === TF_ANSWERS[key]) score++;
+      }
+
+      result.textContent = 'Your score: ' + score + ' / 40';
+      result.style.display = 'block';
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+</body>
+</html>
